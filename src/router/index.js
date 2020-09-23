@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Accounts from '../view/Account/Accounts.vue'
 import AccountDebts from '../view/Account/AccountDebts.vue'
+import RegisterAccoount from '../view/Account/RegisterAccoount.vue'
 import Login from '../view/auth/Login.vue'
 import store from '../store/store'
 
@@ -18,6 +19,11 @@ const routes = [
         path: '/accountdebts',
         name: 'accountDebts',
         component: AccountDebts
+    },
+    {
+        path: '/registeraccoount/:id',
+        name: 'registerAccoount',
+        component: RegisterAccoount
     },
     {
         path: '/login',

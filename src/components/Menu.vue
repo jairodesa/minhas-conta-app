@@ -18,7 +18,7 @@
           <a class="nav-link">Bem vindo {{usestate.name}}</a>
         </li>
         <li class="nav-item">
-          <router-link to="/accountdebts" class="nav-link">Contas</router-link>
+          <router-link to="/registeraccoount" class="nav-link">Contas</router-link>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link" @click.prevent="enterLogout">Logout</a>

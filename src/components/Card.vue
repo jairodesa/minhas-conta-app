@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     async findById(iditem) {
-      console.log(iditem);
       const debts = { id: this.usestate.id, iditem };
       try {
         const debits = await this.$store.dispatch("listDebits", debts);

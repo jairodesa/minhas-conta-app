@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Breadcrumb :title="'Contas'" />
     <br />
     <div class="row">
       <Card
@@ -13,11 +14,13 @@
 </template>
 
 <script>
+import Breadcrumb from "../../components/Breadcrumb.vue";
 import { mapGetters } from "vuex";
 import Card from "../../components/Card.vue";
 export default {
   name: "Accounts",
   components: {
+    Breadcrumb,
     Card,
   },
   data() {
