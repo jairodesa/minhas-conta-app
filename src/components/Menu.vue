@@ -15,15 +15,24 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link">Bem vindo {{usestate.name}}</a>
-        </li>
-        <li class="nav-item">
-          <router-link to="/registeraccoount" class="nav-link">Contas</router-link>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" @click.prevent="enterLogout">Logout</a>
+          <router-link to="/accountDebts" class="nav-link">Contas</router-link>
         </li>
       </ul>
+      <div class="dropdown">
+        <a
+          class="btn btn-secondary dropdown-toggle"
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >{{usestate.name}}</a>
+
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item bg-dark" @click.prevent="enterLogout">Sair</a>
+        </div>
+      </div>
     </div>
   </nav>
 </template>

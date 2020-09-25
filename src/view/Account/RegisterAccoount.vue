@@ -30,14 +30,14 @@
           />
         </div>
         <div class="form-group">
-          <label for="inputPayDay" class="sr-only">Dia do pagamento</label>
+          <label for="inputDueDate" class="sr-only">Dia do pagamento</label>
           <input
             type="date"
-            id="inputPayDay"
+            id="inputDueDate"
             class="form-control"
             placeholder="Valor da conta"
             min="0"
-            v-model="debts.inputPayDay"
+            v-model="debts.dueDate"
             required
           />
         </div>
@@ -53,7 +53,10 @@
           />
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
+        <button class="btn btn-lg btn-success btn-block">Salvar</button>
+        <a @click.prevent="onCancel" class="btn btn-lg btn-info btn-block"
+          >Cancelar</a
+        >
       </form>
     </div>
   </div>
@@ -73,14 +76,14 @@ export default {
   },
   methods: {
     async insertDebts() {
+      const debts = { id: this.usestate.id, iditem: this.$route.params.id };
+      this.debts.accountId = debts.id;
+      this.debtsaccountId = debts.iditem;
       console.log(this.debts);
       try {
-        const response = await this.$http.put(
-          `api/account/?id=${this.usestate.id}&iditem=${this.$route.params.id}`,
-          this.debts
-        );
+        const response = await this.$http.post(`/api/debts`, this.debts);
         if (response) {
-          const debts = { id: this.usestate.id, iditem: this.$route.params.id };
+          const debts = { id: debts.id, iditem: debts.iditem };
           const debits = await this.$store.dispatch("listDebits", debts);
           if (debits) {
             this.$router.push({ name: "accountDebts" });
@@ -88,6 +91,14 @@ export default {
         }
       } catch (error) {
         console.log(error);
+      }
+    },
+    async onCancel() {
+      // this.debts = {};
+      const debts = { id: this.usestate.id, iditem: this.$route.params.id };
+      const debits = await this.$store.dispatch("listDebits", debts);
+      if (debits) {
+        this.$router.push({ name: "accountDebts" });
       }
     },
   },
