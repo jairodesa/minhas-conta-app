@@ -79,6 +79,36 @@ export default {
           amountNumber: 1,
           amount: "",
         },
+        {
+          listDebts: [],
+          mounth: "janeiro",
+          amountNumber: 1,
+          amount: "",
+        },
+        {
+          listDebts: [],
+          mounth: "janeiro",
+          amountNumber: 1,
+          amount: "",
+        },
+        {
+          listDebts: [],
+          mounth: "janeiro",
+          amountNumber: 1,
+          amount: "",
+        },
+        {
+          listDebts: [],
+          mounth: "janeiro",
+          amountNumber: 1,
+          amount: "",
+        },
+        {
+          listDebts: [],
+          mounth: "janeiro",
+          amountNumber: 1,
+          amount: "",
+        },
       ],
     };
   },
