@@ -52,7 +52,8 @@ const actions = {
     listDebits({ commit }, debis) {
 
         return new Promise((resolve, reject) => {
-            http.get(`api/account/findById/${debis.id}/${debis.iditem}`)
+            console.log(`api/debts/${debis.iditem}`)
+            http.get(`api/debts/${debis.iditem}`)
                 .then(response => {
                     commit('DEFINE_LIST_DEBTS', {
                         listDebts: response.data.listDebts,

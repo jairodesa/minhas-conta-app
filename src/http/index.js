@@ -3,7 +3,7 @@ import store from '../store/store'
 
 
 const http = axios.create({
-    baseURL: 'http://localhost:4000/',
+    baseURL: 'http://localhost:3000/',
     headers: {
         'Accept': 'application/json',
     }

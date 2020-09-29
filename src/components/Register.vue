@@ -2,9 +2,12 @@
   <div class="form">
     <!-- <p class="alert alert-danger" v-if="mensagemErro">{{ mensagemErro }}</p> -->
     <div class="text-center">
-      <form class="form-signin">
+      <form class="form-signin" @submit.prevent="enterRegister">
         <h1 class="h3 mb-3 font-weight-normal">Cadastrar</h1>
-
+        <p class="alert alert-danger" v-if="mensagemErro">{{ mensagemErro }}</p>
+        <p class="alert alert-success" v-if="mensagemSussecs">
+          {{ mensagemSussecs }}
+        </p>
         <div class="border-bottom"></div>
         <br />
         <div class="form-group">
@@ -52,7 +55,9 @@
             required
           />
         </div>
-        <button class="btn btn-lg btn-success btn-block" type="submit">Salvar</button>
+        <button class="btn btn-lg btn-success btn-block" type="submit">
+          Salvar
+        </button>
       </form>
     </div>
   </div>
@@ -66,7 +71,40 @@ export default {
     return {
       user: {},
       mensagemErro: "",
+      mensagemSussecs: "",
+      debt: [
+        {
+          listDebts: [],
+          mounth: "janeiro",
+          amountNumber: 1,
+          amount: "",
+        },
+      ],
     };
+  },
+  methods: {
+    async enterRegister() {
+      try {
+        const response = await this.$http.post("user", this.user);
+        console.log(response.status);
+        if (response.status == 201) {
+          const account = {
+            accountEmail: "jario4teste@teste.com.br",
+            castMonth: "",
+            accountYear: "2020",
+            debts,
+          };
+          const response = await this.$http.post("/api/account", this.user);
+          this.mensagemSussecs =
+            "Verifique o seu e-mail para vaildar o usuário.";
+        }
+      } catch (error) {
+        if (error.request.status == 401) {
+          this.mensagemErro = "cadastro inválido!!!";
+          return;
+        }
+      }
+    },
   },
 };
 </script>

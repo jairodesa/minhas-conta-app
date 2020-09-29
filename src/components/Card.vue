@@ -1,11 +1,13 @@
 <template>
   <div class="col">
-    <div class="card text-white bg-dark mb-4" style="max-width: 18rem;">
-      <div class="card-header">{{account.mounth}} - {{accountYear}}</div>
+    <div class="card text-white bg-dark mb-4" style="max-width: 18rem">
+      <div class="card-header">{{ account.mounth }} - {{ accountYear }}</div>
       <div class="card-body">
-        <h5 class="card-title">Valor : {{account.value}}</h5>
+        <h5 class="card-title">Valor : {{ account.value }}</h5>
         <p class="card-text text-lg-right">
-          <spam v-on:click="findById(account._id)" class="btn btn-success">Visualizar</spam>
+          <spam v-on:click="findById(account._id)" class="btn btn-success"
+            >Visualizar</spam
+          >
         </p>
       </div>
     </div>
@@ -22,6 +24,7 @@ export default {
   },
   methods: {
     async findById(iditem) {
+      console.log(this.account);
       const debts = { id: this.usestate.id, iditem };
       try {
         const debits = await this.$store.dispatch("listDebits", debts);

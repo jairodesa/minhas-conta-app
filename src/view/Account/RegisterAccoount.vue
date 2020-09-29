@@ -76,16 +76,16 @@ export default {
   },
   methods: {
     async insertDebts() {
-      const debts = { id: this.usestate.id, iditem: this.$route.params.id };
-      this.debts.accountId = debts.id;
-      this.debtsaccountId = debts.iditem;
-      console.log(this.debts);
+      const debt = { id: this.usestate.id, iditem: this.$route.params.id };
+      console.log(debt);
+      this.debts.accountId = debt.id;
+      console.log(this.debts.accountId);
       try {
         const response = await this.$http.post(`/api/debts`, this.debts);
         if (response) {
-          const debts = { id: debts.id, iditem: debts.iditem };
-          const debits = await this.$store.dispatch("listDebits", debts);
-          if (debits) {
+          const objDebts = { id: debt.id, iditem: debt.iditem };
+          const resp = await this.$store.dispatch("listDebits", objDebts);
+          if (resp) {
             this.$router.push({ name: "accountDebts" });
           }
         }
@@ -96,8 +96,8 @@ export default {
     async onCancel() {
       // this.debts = {};
       const debts = { id: this.usestate.id, iditem: this.$route.params.id };
-      const debits = await this.$store.dispatch("listDebits", debts);
-      if (debits) {
+      const lsDebits = await this.$store.dispatch("listDebits", debts);
+      if (lsDebits) {
         this.$router.push({ name: "accountDebts" });
       }
     },
